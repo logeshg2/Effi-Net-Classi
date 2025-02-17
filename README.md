@@ -8,7 +8,9 @@ I just implemented PyTorch based classification problem with the EfficientNet V2
   - [ ] Precision
   - [ ] Recall
   - [ ] Confusion Matrix
-- [ ] Inference script for fine tuned efficientnet_v2 model.
+- [X] Inference script for fine tuned efficientnet_v2 model.
+  - [X] argparse based execution -> used `argparse` library.
+  - [ ] non-test data's are not working.
 
 > Input image shape should be the same as the models input else getting **low accuracy in prediction**. [**IMP**]
 
@@ -18,3 +20,5 @@ I just implemented PyTorch based classification problem with the EfficientNet V2
    2. Second load the state_dict() from the checkpoints.
    3. Both should be done in **cpu** itself. After that change the device to **GPU**. [**IMP**] 
    4. while inferencing do not need to load the pretrained weights (**IMP**) -> check `eval.py`
+2. Output layer must be modified based on the training dataset(based on number of classes) -> atleast in classifiction problem.
+3. In inference the **input image shape** is important. (convert the desired shape before passing into the model for inference). [**V.IMP**] => **[batch_size, channels, height, weight]** -> this orde.r
