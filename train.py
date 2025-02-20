@@ -44,12 +44,12 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Device Used: {device}")
 
 # preparation of dataloader
-batch_size = 32
+batch_size = 128
 train_dataloader = DataLoader(train_data, batch_size, shuffle=True)
 test_dataloader = DataLoader(test_data, batch_size, shuffle=True)
 
 # EfficientNet_V2 model
-model = models.efficientnet_b1(weights=models.EfficientNet_B1_Weights.DEFAULT).to(device)
+model = models.efficientnet_b1(weights=models.EfficientNet_B1_Weights.DEFAULT)
 # print(model)
 
 ### fine tuning 'model' for CIFAR - 10 dataset
@@ -64,6 +64,7 @@ model.classifier = nn.Sequential(
     nn.Dropout(p=0.4, inplace=True),
     nn.Linear(in_features=1280, out_features=out_shape, bias=True)
 )
+model.to(device)
 
 summary = torchinfo.summary(model, 
         input_size=(32, 3, 224, 224), # make sure this is "input_size", not "input_shape" (batch_size, color_channels, height, width)
@@ -72,9 +73,8 @@ summary = torchinfo.summary(model,
         col_width=20,
         row_settings=["var_names"]
 )
-# print(summary)
 
-train_model = True  
+train_model = False  
 ### training the model
 # loss function and optimizer
 loss_fn = nn.CrossEntropyLoss()
@@ -139,7 +139,7 @@ if (train_model):
     train_function()
 
 # save check points
-torch.save(model.state_dict(), r"D:\Effi-Net-Classi\checkpoints\model1.pth")
+torch.save(model.state_dict(), r"D:\Effi-Net-Classi\checkpoints\model1_18_02_25.pt")
 
 # trying inference (just testing)
 test_img = (img.unsqueeze(dim=1)).permute(1,0,2,3)

@@ -5,7 +5,7 @@
 
 import cv2
 import torch 
-import torchinfo
+import torchmetrics
 from torch import nn
 from tqdm.auto import tqdm
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ model.classifier = nn.Sequential(
     nn.Dropout(p=0.4,inplace=True),
     nn.Linear(in_features=1280, out_features=num_classes, bias=True)
 )
-model.load_state_dict(torch.load(r"D:\Effi-Net-Classi\checkpoints\model1.pth"))
+model.load_state_dict(torch.load(r"D:\Effi-Net-Classi\checkpoints\model1_18_02_25.pt"))
 model.to(device)
 print("Model device:", next(model.parameters()).device)
 
