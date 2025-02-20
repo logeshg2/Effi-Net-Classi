@@ -12,6 +12,8 @@ I just implemented PyTorch based classification problem with the EfficientNet V2
 - [X] Inference script for fine tuned efficientnet_v2 model.
   - [X] argparse based execution -> used `argparse` library.
   - [X] non-test data's are working.
+- [X] ViT -> Vision Transformer model has been fine-tuned (1 epoch - 86M parameters)
+- [X] DenseNet -> fine-tuned **which showed impressive results and accuracy**.
 
 > [!IMPORTANT]
 > **V.IMP Note:** If the model is small then train the entire model's parameters; If the model is large then train the models by freezing few layers. **`The model should have sufficient parameters to train on`** 
