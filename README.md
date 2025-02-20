@@ -13,8 +13,10 @@ I just implemented PyTorch based classification problem with the EfficientNet V2
   - [X] argparse based execution -> used `argparse` library.
   - [X] non-test data's are working.
 
+> [!IMPORTANT]
 > **V.IMP Note:** If the model is small then train the entire model's parameters; If the model is large then train the models by freezing few layers. **`The model should have sufficient parameters to train on`** 
 
+> [!IMPORTANT]
 > Input image shape should be the same as the models input else getting **low accuracy in prediction**. [**IMP**] **-> eg (224,224)** <br>
 > Training the entire model without freezing the top layers **-> improves the accuracy and training**. [**IMP**]
 
